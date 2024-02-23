@@ -25,26 +25,13 @@ const todosSlice = createSlice({
             }]
         },
         deleteTodo: (state, action) => {
-            // action's payload contains an index
-            state.todos = state.todos.filter(todo => {
-                return todo.id !== action.payload
-            })
+           
         },
         updateTodo: (state, action) => {
-            // action's payload contains an index and new data
-            state.todos[action.payload.id] = {
-                ...state.todos[action.payload.id],
-                todo: action.payload.todo
-            }
+            
         },
         toggleDone: (state, action) => {
-            console.log(action.payload)
-            if (state.todos[action.payload]) {
-                state.todos[action.payload] = {
-                    ...state.todos[action.payload],
-                    done: !state.todos[action.payload].done
-                }
-            }
+           
         }
     }
 })

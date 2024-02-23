@@ -8,27 +8,19 @@ const TaskItem = ({ todo }) => {
   const [editedText, setEditedText] = useState("")
   const [isEditing, setEditing] = useState(false)
 
-  const dispatch = useDispatch()
 
   const handleEdit = () => {
     setEditing(true)
   }
   const handleEditSubmitter = (event) => {
-    console.log('Submit edit')
-    event.preventDefault()
-    dispatch(updateTodo({
-      id: todo.id,
-      todo: editedText,
-    }))
-    setEditing(false)
+   
   }
 
   const handleDelete = (id) => {
-    dispatch(deleteTodo(id))
   }
 
   const handleToggleDone = (id) => {
-    dispatch(toggleDone(id))
+  
   }
 
   return (
