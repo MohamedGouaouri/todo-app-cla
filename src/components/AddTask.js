@@ -1,34 +1,19 @@
 import { useRef, useState } from "react";
+import {useDispatch} from 'react-redux'
+import { addTodo } from "../redux/todos";
 
-const AddTask = ({ tasks, setTasks }) => {
+const AddTask = () => {
   const [task, setTask] = useState("");
+  const dispatch = useDispatch()
 
   const inputRef = useRef(null);
 
-  // add task handler event//
+  // add task handler event
   const addTaskHandler = (e) => {
     e.preventDefault();
-
-    // post task into server
-    taskPosting(task);
     inputRef.current.blur();
+    dispatch(addTodo(task))
     setTask("");
-  };
-
-  // task posting
-  // use "text"
-  const taskPosting = async (text) => {
-    const res = await fetch(`https://leaf-hulking-circle.glitch.me/tasks`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ text }),
-    });
-
-    const data = await res.json();
-    // real-time data updation
-    setTasks([...tasks, data]);
   };
 
   return (
